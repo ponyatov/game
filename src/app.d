@@ -5,15 +5,16 @@ import bindbc.sdl;
 
 class Window {
 
-    enum W = 480;//240;
-    enum H = 640;//320;
+    enum W = 480; //240;
+    enum H = 640; //320;
 
     SDL_Window* win = null;
     SDL_Renderer* render = null;
 
     this(string title) {
         if (win is null)
-            assert(SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) == 0);
+            assert(SDL_Init(
+                    SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_JOYSTICK) == 0);
         win = SDL_CreateWindow(title.toStringz, SDL_WINDOWPOS_UNDEFINED,
                 SDL_WINDOWPOS_UNDEFINED, W, H, SDL_WINDOW_SHOWN);
         assert(win !is null);

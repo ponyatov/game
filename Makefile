@@ -48,3 +48,43 @@ doc/yazyk_programmirovaniya_d.pdf:
 	$(CURL) $@ https://www.k0d.cc/storage/books/D/yazyk_programmirovaniya_d.pdf
 doc/Programming_in_D.pdf:
 	$(CURL) $@ http://ddili.org/ders/d.en/Programming_in_D.pdf
+
+# install
+.PHONY: install update doc gz
+install: doc gz
+	$(MAKE) update
+	dub fetch dfmt
+update:
+	sudo apt update
+	sudo apt install -uy `cat apt.txt`
+
+gz:
+
+# merge
+MERGE += Makefile README.md LICENSE apt.txt $(D)
+MERGE += .clang-format .editorconfig .gitattributes .gitignore
+MERGE += bin doc lib inc src tmp
+
+.PHONY: dev
+dev:
+	git push -v
+	git checkout $@
+	git pull -v
+	git checkout shadow -- $(MERGE)
+#	$(MAKE) doxy ; git add -f docs
+
+.PHONY: shadow
+shadow:
+	git push -v
+	git checkout $@
+	git pull -v
+
+.PHONY: release
+release:
+	git tag $(NOW)-$(REL)
+	git push -v --tags
+	$(MAKE) shadow
+
+ZIP = tmp/$(MODULE)_$(NOW)_$(REL)_$(BRANCH).zip
+zip:
+	git archive --format zip --output $(ZIP) HEAD
