@@ -1,12 +1,14 @@
 {
-    "name":         "game",
-    "description":  "gamedev in D lang",
-    "homepage":     "https://github.com/ponyatov/game",
-    "authors":     ["Dmitry Ponyatov <dponyatov@gmail.com>"],
-    "copyright":    "Copyright © 2023, Dmitry Ponyatov <dponyatov@gmail.com>",
-    "license":      "MIT",
-    "targetType":   "executable",
-    "targetPath":   "bin",
+    "name":           "game",
+    "description":    "gamedev in D lang",
+    "homepage":       "https://github.com/ponyatov/game",
+    "authors":       ["Dmitry Ponyatov <dponyatov@gmail.com>"],
+    "copyright":      "Copyright © 2023, Dmitry Ponyatov <dponyatov@gmail.com>",
+    "license":        "MIT",
+    "targetType":     "executable",
+    "targetPath":     "bin",
+    "mainSourceFile": "src/tetris.d",
+    "targetName":     "tetris",
     "dependencies": {
         "bindbc-sdl": "~>1.4.4"
     },

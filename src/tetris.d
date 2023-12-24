@@ -1,3 +1,5 @@
+module tetris;
+
 import std.stdio;
 
 import window;
