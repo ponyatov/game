@@ -50,8 +50,8 @@ doc/Programming_in_D.pdf:
 	$(CURL) $@ http://ddili.org/ders/d.en/Programming_in_D.pdf
 
 # install
-.PHONY: install update doc gz
-install: doc gz
+.PHONY: install update doc gz ref
+install: doc gz ref
 	$(MAKE) update
 	dub fetch dfmt
 update:
@@ -59,6 +59,13 @@ update:
 	sudo apt install -uy `cat apt.txt`
 
 gz:
+
+ref: ref/sdl2-tetris/README.md
+
+ref/sdl2-tetris/README.md:
+	git clone -o gh https://github.com/howprice/sdl2-tetris.git ref/sdl2-tetris
+	rm -rf ref/sdl2-tetris/tools ref/sdl2-tetris/*.bat ref/sdl2-tetris/*.sh
+	rm -rf ref/sdl2-tetris/3rdparty
 
 # merge
 MERGE += Makefile README.md LICENSE apt.txt $(D)
