@@ -62,10 +62,11 @@ gz:
 
 ref: ref/sdl2-tetris/README.md
 
+REF2T = ref/sdl2-tetris
 ref/sdl2-tetris/README.md:
 	git clone -o gh https://github.com/howprice/sdl2-tetris.git ref/sdl2-tetris
-	rm -rf ref/sdl2-tetris/tools ref/sdl2-tetris/*.bat ref/sdl2-tetris/*.sh
-	rm -rf ref/sdl2-tetris/3rdparty
+	rm -rf $(REF2T)/tools $(REF2T)/*.bat $(REF2T)/*.sh
+	rm -rf $(REF2T)/3rdparty $(REF2T)/scripts
 
 # merge
 MERGE += Makefile README.md LICENSE apt.txt $(D)
