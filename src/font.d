@@ -1,6 +1,6 @@
 module font;
 
 class Font {
-    static const enum ttfDroidFallback = import(
-                "droid/DroidSansFallbackFull.ttf");
+    static immutable ubyte[] ttfDroidFallback = cast(immutable(ubyte)[]) import(
+            "droid/DroidSansFallbackFull.ttf");
 }
